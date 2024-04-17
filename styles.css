@@ -1,0 +1,40 @@
+body {
+    background-color: #121212;
+    color: orange;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+input {
+    width: 300px;
+}
+
+button {
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkorange;
+}
