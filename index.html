@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Wallet Checker</title>
+ <center>   <title>The Ticker Is $RUNES Solana Stone Airdrop Checker</title></center>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,17 +18,25 @@
         <button onclick="checkWallet()">Check</button>
         <p id="result"></p><br>
         <center><iframe src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="400" height="350" scrolling="no" id="nhiframe"></iframe></center>
+        <h2 id="runesPrice">Loading RUNES price...</h2>
     </div>
-    <script src="script.js"></script><br>
-    
-    <h1><center>The Ticker Is $RUNES</center></h1><br>
-    <center>
-        Token: RUNES <br>
-        Blockchain: Solana <br> 
-        Contract Address: AAXzWyHFErx9MzgiDKSxRZ14VAYjW7Pv6xEqpnSLXPL9 <br> 
-        Dex: https://dexscreener.com/solana/29wcdqtjrzeuzehmdd52vhrdskjjbxxtecelt8veqq6f <br> 
-        Birdeye: https://birdeye.so/token/AAXzWyHFErx9MzgiDKSxRZ14VAYjW7Pv6xEqpnSLXPL9?chain=solana <br>
-        Twitter: https://twitter.com/tickerisrunes <br>
-    </center>
+    <script src="script.js"></script>
+    <script>
+        async function fetchTokenPrice() {
+            const url = 'API_URL_HERE'; // Replace with the actual API URL
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const price = data.price; // Modify according to actual data structure
+                document.getElementById('runesPrice').innerText = `RUNES Price: $${price}`;
+            } catch (error) {
+                console.error('Failed to fetch token price', error);
+                document.getElementById('runesPrice').innerText = 'Failed to load price';
+            }
+        }
+
+        fetchTokenPrice(); // Call this function on page load
+        setInterval(fetchTokenPrice, 60000); // Update the price every minute
+    </script>
 </body>
 </html>
