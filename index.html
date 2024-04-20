@@ -13,7 +13,7 @@
             <li><a href="https://birdeye.so/token/AAXzWyHFErx9MzgiDKSxRZ14VAYjW7Pv6xEqpnSLXPL9?chain=solana">Birdeye</a></li>
             <li><a href="https://www.sniper.xyz/collection/runes">Solana Stones</a></li>
         </ul>
-        <img src="stone.jpeg" alt="Stone" class="sidebar-image"> <!-- Added image at the bottom of the sidebar -->
+        <img src="stone.jpeg" alt="Stone" class="sidebar-image">
     </div>
     <div class="container">
         <center><img src="logo.jpeg" alt="Logo" class="logo"></center>
@@ -22,6 +22,8 @@
         <button onclick="checkWallet()">Check</button>
         <p id="result"></p><br>
         <h2 id="runesPrice">Loading RUNES price...</h2>
+        <!-- Timer Display -->
+        <h2 id="airdropTimer">Solana Stone airdrop #1 takes place in: <span id="timeLeft"></span></h2>
         <!-- Twitter Feed Embed -->
         <center><a class="twitter-timeline" href="https://twitter.com/tickerisrunes?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-width="400" data-height="600"></a></center>
         <h2>How to Run a Bitcoin Node</h2>
@@ -29,5 +31,23 @@
     </div>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script src="script.js"></script>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const targetTime = new Date();
+            targetTime.setHours(21, 0, 0, 0); // 9 PM Eastern, converted to local time
+            if (now > targetTime) targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if past 9 PM
+            
+            const diff = targetTime - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById("timeLeft").innerText = `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000); // Update every second
+    </script>
 </body>
 </html>
