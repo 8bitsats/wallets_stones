@@ -17,6 +17,12 @@ body {
     padding: 20px 10px; /* Padding inside the sidebar */
     box-sizing: border-box; /* Include padding in width */
 }
+.sidebar-image {
+    display: block;
+    max-width: 100%; /* Makes sure the image is not wider than the sidebar */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px auto 0; /* Centers the image and adds margin on the top */
+}
 
 .sidebar ul {
     list-style-type: none;
