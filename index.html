@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <center>   <title>The Ticker Is $RUNES Solana Stone Airdrop Checker</title></center>
+    <title>Solana Wallet Checker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <center>
-
+            <iframe src="https://kick.com/theh0mie" class="responsive-iframe" frameborder="0" allowfullscreen></iframe>
         </center>
         <div id="jupiter-widget"></div>
         <center><img src="logo.jpeg" alt="Logo" class="logo"></center>
@@ -17,26 +17,18 @@
         <input type="text" id="walletInput" placeholder="Enter your Solana wallet address">
         <button onclick="checkWallet()">Check</button>
         <p id="result"></p><br>
-         <iframe src="https://kick.com/theh0mie" class="responsive-iframe" frameborder="0" allowfullscreen></iframe>
+        <center><iframe src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="400" height="350" scrolling="no" id="nhiframe"></iframe></center>
         <h2 id="runesPrice">Loading RUNES price...</h2>
+        <br>
+        <!-- Twitter Feed Embed -->
+        <center><a class="twitter-timeline" href="https://twitter.com/0rdlibrary?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-width="400" data-height="600">Tweets by 0rdlibrary</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+        <br>
+        <center>
+            <h2>How to Run a Bitcoin Node</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RdA2iyD3758" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </center>
     </div>
     <script src="script.js"></script>
-    <script>
-        async function fetchTokenPrice() {
-            const url = 'API_URL_HERE'; // Replace with the actual API URL
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                const price = data.price; // Modify according to actual data structure
-                document.getElementById('runesPrice').innerText = `RUNES Price: $${price}`;
-            } catch (error) {
-                console.error('Failed to fetch token price', error);
-                document.getElementById('runesPrice').innerText = 'Failed to load price';
-            }
-        }
-
-        fetchTokenPrice(); // Call this function on page load
-        setInterval(fetchTokenPrice, 60000); // Update the price every minute
-    </script>
 </body>
 </html>
