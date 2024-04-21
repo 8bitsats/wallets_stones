@@ -15,17 +15,17 @@
     </div>
     <div class="container">
         <center><img src="logo.jpeg" alt="Logo" class="logo"></center>
-       <center> <h1>The Ticker Is $RUNES</h1><br>
-        Blockchain: Solana <br>
-        <center><h1>The Ticker Is $RUNES Solana Stone Airdrop Checker</h1></center>
+        <h1>The Ticker Is $RUNES</h1>
+        <p>Blockchain: Solana</p>
+        <h1>The Ticker Is $RUNES Solana Stone Airdrop Checker</h1>
         <input type="text" id="walletInput" placeholder="Enter your Solana wallet address">
         <button onclick="checkWallet()">Check</button>
-        <p id="result"></p><br>
+        <p id="result"></p>
         <h2 id="runesPrice">Loading RUNES price...</h2>
         <!-- Timer Display -->
         <h2 id="airdropTimer">Solana Stone airdrop #1 takes place in: <span id="timeLeft"></span></h2>
         <!-- Twitter Feed Embed -->
-        <center><a class="twitter-timeline" href="https://twitter.com/tickerisrunes?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-width="400" data-height="600"></a></center>
+        <a class="twitter-timeline" href="https://twitter.com/tickerisrunes?ref_src=twsrc%5Etfw" data-tweet-limit="5" data-width="400" data-height="600"></a>
         <h2>How to Run a Bitcoin Node</h2>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/RdA2iyD3758" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
@@ -35,8 +35,8 @@
         function updateTime() {
             const now = new Date();
             const targetTime = new Date();
-            targetTime.setHours(21, 0, 0, 0); // 9 PM Eastern, converted to local time
-            if (now > targetTime) targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if past 9 PM
+            targetTime.setUTCHours(1, 0, 0, 0); // 9 PM Eastern is 1 AM UTC next day
+            if (now.getUTCHours() >= 1) targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if past 1 AM UTC
             
             const diff = targetTime - now;
             const hours = Math.floor(diff / (1000 * 60 * 60));
