@@ -3,32 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana Wallet Checker</title>
+    <title>The Ticker Is $RUNES</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="https://www.sniper.xyz/collection/runes">Solana Stones</a></li>
+        </ul>
+        <img src="stone.jpeg" alt="Stone" class="sidebar-image">
+    </div>
     <div class="container">
-        <center>
-            <iframe src="https://kick.com/theh0mie" class="responsive-iframe" frameborder="0" allowfullscreen></iframe>
-        </center>
-        <div id="jupiter-widget"></div>
         <center><img src="logo.jpeg" alt="Logo" class="logo"></center>
-        <h1>Check Your Wallet</h1>
+        <h1>The Ticker Is $RUNES</h1>
+        <p>Blockchain: Solana</p>
+        <h1>The Ticker Is $RUNES Presale Wallet Checker</h1>
         <input type="text" id="walletInput" placeholder="Enter your Solana wallet address">
         <button onclick="checkWallet()">Check</button>
-        <p id="result"></p><br>
-        <center><iframe src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="400" height="350" scrolling="no" id="nhiframe"></iframe></center>
+        <p id="result"></p>
+
+        <!-- Embedded Google Form replacing Twitter Feed -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSczjIu8EJY7GfHXfFy_JCP2h0Ns_4P1mrqv0YdNVje3sDz3iQ/viewform?embedded=true" width="640" height="1313" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        
+        <h2>How to Run a Bitcoin Node</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/RdA2iyD3758" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <script src="script.js"></script><br>
-    
-    <h1><center>The Ticker Is $RUNES</center></h1><br>
-    <center>
-        Token: RUNES <br>
-        Blockchain: Solana <br> 
-        Contract Address: AAXzWyHFErx9MzgiDKSxRZ14VAYjW7Pv6xEqpnSLXPL9 <br> 
-        Dex: https://dexscreener.com/solana/29wcdqtjrzeuzehmdd52vhrdskjjbxxtecelt8veqq6f <br> 
-        Birdeye: https://birdeye.so/token/AAXzWyHFErx9MzgiDKSxRZ14VAYjW7Pv6xEqpnSLXPL9?chain=solana <br>
-        Twitter: https://twitter.com/tickerisrunes <br>
-    </center>
+    <script src="script.js"></script>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const targetTime = new Date();
+            targetTime.setUTCHours(1, 0, 0, 0); // 9 PM Eastern is 1 AM UTC next day
+            if (now.getUTCHours() >= 1) targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if past 1 AM UTC
+            
+            const diff = targetTime - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById("timeLeft").innerText = `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000); // Update every second
+    </script>
 </body>
 </html>
