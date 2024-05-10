@@ -15,15 +15,13 @@
       justify-content: center;
       align-items: center;
     }
-    #image-container {
+
+    h1 {
       position: relative;
+      color: white;
       z-index: 2;
-      display: none; /* Initially hidden */
     }
-    .gallery-image {
-      max-width: 40%;
-      margin: 0 10px;
-    }
+
     canvas {
       position: absolute;
       top: 0;
@@ -34,65 +32,47 @@
     }
   </style>
 </head>
+
 <body>
-<div id="main-content" style="display:none;"> <!-- Initially hide the main content -->
   <h1><center>The Recursed Shall Be Resurrected.</center></h1>
-
-  </div>
   <canvas id="runic-canvas"></canvas>
-  <h1><center>The Recursed Shall Be Resurrected.</center></h1>
-</div>
   <script>
-    const password = 'recursed'; // Set your desired password here
+    const canvas = document.getElementById('runic-canvas');
+    const ctx = canvas.getContext('2d');
 
-    // Prompt for password
-    const enteredPassword = prompt('Enter password anon..if you are:');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    if (enteredPassword === password) {
-      // Show content if the password is correct
-      document.getElementById('main-content').style.display = 'block';
-      document.getElementById('image-container').style.display = 'block';
+    // Configuration for the runic text
+    const runes = 'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚻᛁᛉᛊᛏᛒᛖᛗᛚᛜᛟᛞ';
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({ length: columns }, () => -1);
 
-      const canvas = document.getElementById('runic-canvas');
-      const ctx = canvas.getContext('2d');
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      ctx.fillStyle = '#FFA500'; // Orange color
+      ctx.font = `${fontSize}px monospace`;
 
-      // Configuration for the runic text
-      const runes = 'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚻᛁᛉᛊᛏᛒᛖᛗᛚᛜᛟᛞ';
-      const fontSize = 16;
-      const columns = canvas.width / fontSize;
-      const drops = Array.from({ length: columns }, () => -1);
+      drops.forEach((y, i) => {
+        const text = runes.charAt(Math.floor(Math.random() * runes.length));
+        ctx.fillText(text, i * fontSize, y * fontSize);
 
-      function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = '#FFA500'; // Orange color
-        ctx.font = `${fontSize}px monospace`;
-
-        drops.forEach((y, i) => {
-          const text = runes.charAt(Math.floor(Math.random() * runes.length));
-          ctx.fillText(text, i * fontSize, y * fontSize);
-
-          if (y * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-          }
-          drops[i]++;
-        });
-      }
-
-      function animate() {
-        draw();
-        requestAnimationFrame(animate);
-      }
-
-      animate();
-    } else {
-      // Notify the user if the password is incorrect
-      alert('Incorrect password!');
+        if (y * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      });
     }
+
+    function animate() {
+      draw();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
   </script>
 </body>
 </html>
